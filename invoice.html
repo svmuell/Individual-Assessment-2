@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Invoice - Campus Supply Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="../images/campus supply logo.jpg" alt="Campus Supply Hub logo">
+        <div><div style="font-weight:700">CampusSupply Hub</div><div class="small">Everything students need — organized, affordable, fast.</div></div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="primary">Register</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="form" aria-label="Invoice">
+        <div class="success-message">
+          Thank you for your order! Your invoice has been generated below.
+        </div>
+        
+        <h2>Invoice</h2>
+        
+        <div class="row">
+          <div>
+            <p><strong>Invoice Date:</strong> <span id="invoice-date">2025-11-13</span></p>
+            <p><strong>Invoice #:</strong> <span id="invoice-number">INV-2025-SS-001</span></p>
+          </div>
+          <div>
+            <p><strong>Billed To:</strong> Samuel Kelly</p>
+            <p><strong>Payment Method:</strong> Credit Card</p>
+          </div>
+        </div>
+        
+        <table class="table">
+          <thead><tr><th>Product</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>
+          <tbody id="invoice-items">
+            <!-- Invoice items will be loaded dynamically -->
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3">Subtotal</td><td id="invoice-subtotal">JMD 0</td></tr>
+            <tr><td colspan="3">Discount</td><td id="invoice-discount">-JMD 0</td></tr>
+            <tr><td colspan="3">Tax (15%)</td><td id="invoice-tax">JMD 0</td></tr>
+            <tr><td colspan="3" style="font-weight: 700;">Total</td><td id="invoice-total" style="font-weight: 700;">JMD 0</td></tr>
+          </tfoot>
+        </table>
+        
+        <div class="actions">
+          <button class="btn primary" onclick="window.print()">Print Invoice</button>
+          <a class="btn ghost" href="index.html">Continue Shopping</a>
+        </div>
+        
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 Campus Supply Hub · Module: Web Programming (CIT2011) · Student: Samuel Kelly, 2406535
+    </footer>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

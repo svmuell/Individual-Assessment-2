@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cart - Campus Supply Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="../images/campus supply logo.jpg" alt="Campus Supply Hub logo">
+        <div><div style="font-weight:700">Campus Supply Hub</div><div class="small">Everything students need — organized, affordable, fast.</div></div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html" class="active">Cart <span id="cart-count" class="cart-badge">0</span></a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="primary">Register</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section>
+        <h2 style="margin-top:1rem">Shopping Cart</h2>
+        <div class="form" role="region" aria-label="Cart contents">
+          <table class="table" aria-describedby="cartdesc">
+            <caption id="cartdesc">Cart showing items, quantity, price, subtotal, discount, tax and total.</caption>
+            <thead>
+              <tr><th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th><th>Action</th></tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+            <tfoot>
+              <tr><td colspan="3">Subtotal</td><td id="cart-subtotal">JMD 0</td><td></td></tr>
+              <tr><td colspan="3">Discount</td><td id="cart-discount">-JMD 0</td><td></td></tr>
+              <tr><td colspan="3">Tax (15%)</td><td id="cart-tax">JMD 0</td><td></td></tr>
+              <tr><td colspan="3">Total</td><td id="cart-total">JMD 0</td><td></td></tr>
+            </tfoot>
+          </table>
+
+          <div style="margin-top:0.75rem;display:flex;gap:0.5rem;justify-content:flex-end">
+            <a class="btn ghost" href="index.html">Continue Shopping</a>
+            <a class="btn primary" href="checkout.html">Check Out</a>
+            <button class="btn ghost" onclick="clearCart()">Clear All</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 Campus Supply Hub · Module: Web Programming (CIT2011) · Student: Samuel Kelly, 2406535
+    </footer>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
