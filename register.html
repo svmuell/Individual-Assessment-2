@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register - Campus Supply Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <img src="images/campus-supply-logo.jpg" alt="Campus Supply Hub logo" width="48" height="48">
+        <div><div style="font-weight:700">Campus Supply Hub</div><div class="small">Everything students need — organized, affordable, fast.</div></div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="primary active" aria-current="page">Register</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="form" aria-labelledby="register-heading">
+        <h2 id="register-heading">Register</h2>
+        <form id="register-form" method="post" novalidate>
+          <label for="fullname">Full name</label>
+          <input id="fullname" name="fullname" type="text" required autocomplete="name">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" required autocomplete="username">
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required autocomplete="new-password" minlength="6">
+
+          <label for="confirm-password">Confirm Password</label>
+          <input id="confirm-password" name="confirm-password" type="password" required autocomplete="new-password">
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Register</button>
+            <button class="btn ghost" type="reset">Clear All</button>
+            <a class="btn ghost" href="login.html">Already have an account?</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 Campus Supply Hub · Module: Web Programming (CIT2011) · Student: Samuel Kelly, 2406535
+    </footer>
+  </div>
+  
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long!');
+        return;
+      }
+      
+      const userData = {
+        fullname: document.getElementById('fullname').value,
+        email: document.getElementById('email').value,
+        username: document.getElementById('username').value
+      };
+      
+      localStorage.setItem('userData', JSON.stringify(userData));
+      localStorage.setItem('currentUser', userData.username);
+      
+      alert('Registration successful! Welcome to Campus Supply Hub.');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

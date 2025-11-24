@@ -1,0 +1,385 @@
+/* styles.css - Clean, accessible, responsive CSS for the school supplies e-commerce assignment */
+
+/* Root variables */
+:root{
+  --brand-1: #0b5fff; /* primary */
+  --brand-2: #ff6b6b; /* accent */
+  --success: #28a745;
+  --error: #dc3545;
+  --warning: #ffc107;
+  --bg: #ffffff;
+  --muted: #666666;
+  --max-width: 1100px;
+  --gap: 1rem;
+  --radius: 12px;
+  --card-shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --transition: all 0.3s ease;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#111827;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  padding:2rem;
+  display:flex;
+  justify-content:center;
+  font-size:16px;
+  transition: var(--transition);
+}
+
+.container{max-width:var(--max-width);width:100%;margin:0 auto}
+
+/* Header & nav */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--gap);
+  padding:1rem 0;
+  animation: fadeIn 0.8s ease;
+}
+.brand{display:flex;align-items:center;gap:0.75rem;transition: var(--transition)}
+.brand:hover {transform: scale(1.02);}
+.brand img{width:48px;height:48px;border-radius:8px;object-fit:cover}
+.nav{display:flex;gap:0.75rem;align-items:center}
+.nav a{
+  padding:0.5rem 0.75rem;
+  text-decoration:none;
+  color:var(--muted);
+  position: relative;
+  transition: var(--transition);
+  border-radius: 8px;
+}
+.nav a:hover {
+  background-color: rgba(11, 95, 255, 0.1);
+  color: var(--brand-1);
+}
+.nav a.active {
+  background-color: var(--brand-1);
+  color: white;
+}
+.nav a.primary{
+  background:var(--brand-1);
+  color:#fff;
+  border-radius:8px;
+  padding:0.5rem 0.85rem;
+  transition: var(--transition);
+}
+.nav a.primary:hover {
+  background: #0a50d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(11, 95, 255, 0.3);
+}
+
+/* Cart badge */
+.cart-badge {
+  background: var(--brand-2);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-left: 5px;
+  animation: pulse 2s infinite;
+}
+
+/* Grid layout for main */
+.main{display:grid;grid-template-columns:1fr;gap:1.25rem}
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1.25rem;
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  background:linear-gradient(90deg,rgba(11,95,255,0.06), rgba(255,107,107,0.03));
+  animation: slideIn 0.8s ease;
+}
+.hero .info{max-width:60%}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  padding:1rem 0;
+  animation: fadeIn 1s ease;
+}
+
+/* Product card */
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:1rem;
+  box-shadow:var(--card-shadow);
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(16,24,40,0.15);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.card:hover::before {
+  transform: scaleX(1);
+}
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:8px;
+  transition: var(--transition);
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.small{font-size:0.9rem;color:var(--muted)}
+
+/* Forms */
+.form{
+  background:#fff;
+  padding:1.5rem;
+  border-radius:12px;
+  box-shadow:var(--card-shadow);
+  animation: fadeIn 0.8s ease;
+}
+.form label{display:block;margin:0.5rem 0 0.25rem;font-weight:600}
+.form input, .form select, .form textarea{
+  width:100%;
+  padding:0.6rem;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+.form input:focus, .form select:focus, .form textarea:focus {
+  outline: none;
+  border-color: var(--brand-1);
+  box-shadow: 0 0 0 3px rgba(11, 95, 255, 0.1);
+}
+.form input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--error);
+}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+.form .actions{display:flex;gap:0.5rem;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  padding:0.6rem 0.9rem;
+  border-radius:8px;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align:center;
+}
+.btn.primary{
+  background:var(--brand-1);
+  color:#fff;
+}
+.btn.primary:hover {
+  background: #0a50d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(11, 95, 255, 0.3);
+}
+.btn.ghost{
+  background:transparent;
+  border:1px solid #e5e7eb;
+  color: var(--muted);
+}
+.btn.ghost:hover {
+  background: #f9fafb;
+  border-color: var(--brand-1);
+  color: var(--brand-1);
+}
+.btn.add-to-cart {
+  background: var(--brand-2);
+  color: white;
+}
+.btn.add-to-cart:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+}
+
+/* Table for cart */
+.table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--card-shadow);
+  animation: fadeIn 0.8s ease;
+}
+.table th, .table td{padding:0.6rem 0.75rem;border-bottom:1px solid #f3f4f6;text-align:left}
+.table tfoot td{font-weight:700}
+.table tr {
+  transition: var(--transition);
+}
+.table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Footer */
+.footer{
+  margin-top:1.5rem;
+  padding:1rem 0;
+  color:var(--muted);
+  font-size:0.9rem;
+  text-align:center;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Error and success messages */
+.error-message {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #c3e6cb;
+  animation: slideIn 0.5s ease;
+}
+
+.warning-message {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #ffeaa7;
+}
+
+.message {
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  animation: slideIn 0.5s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Quantity controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quantity-btn:hover {
+  background: var(--brand-1);
+  color: white;
+  border-color: var(--brand-1);
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
+/* User status */
+.user-status {
+  background: var(--brand-1);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  animation: slideIn 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width:800px){
+  .hero{flex-direction:column;align-items:flex-start}
+  .form .row{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap}
+  body{padding:1rem}
+  .table {
+    font-size: 0.8rem;
+  }
+  .table th, .table td {
+    padding: 0.4rem 0.5rem;
+  }
+  .form .actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width:480px){
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .form .actions {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}
